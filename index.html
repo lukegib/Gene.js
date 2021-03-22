@@ -5,7 +5,12 @@
             <canvas id="ga"></canvas>
         <div>
 
+
+
         <!--
+
+		Could add inputs here to mess around with the different parameters
+			
         <div>
             <form onsubmit="run()">
                 <br><br>
@@ -27,7 +32,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 	<script type="text/javascript" src="gene.js"></script>
 	<script>
-        // initialize inputs
+
+        // Initialize inputs
 		const populationSize = 100;
 		const maxGenerations = 50;
 		const pCrossover = 0.8;
@@ -44,8 +50,9 @@
 			weight: [18, 9, 23, 20, 59, 61, 70, 75, 76, 30],
 		};
 
-		// run evolution and get data for each question
-		// q1 - One-Max
+		// Run the Genetic Algorithm (which returns the average and best scores for each generation)
+
+		// Q1 - One-Max
 		const dataQ1 = GeneticAlgorithm(
 			populationSize,
 			20,
@@ -56,6 +63,7 @@
 			null,
 			null
 		);
+		// Q2 - Target String
 		const dataQ2 = GeneticAlgorithm(
 			populationSize,
 			20,
@@ -66,6 +74,7 @@
 			target,
 			null
 		);
+		// Q3 - Deceptive Landscape
 		const dataQ3 = GeneticAlgorithm(
 			populationSize,
 			20,
@@ -76,6 +85,7 @@
 			null,
 			null
 		);
+		// Q4 (A) - Knapsack Problem 1 
 		const dataQ4_a = GeneticAlgorithm(
 			populationSize,
 			10,
@@ -86,6 +96,7 @@
 			null,
 			knapsack
 		);
+		// Q4 (B) - Knapsack Problem 2
 		const dataQ4_b = GeneticAlgorithm(
 			populationSize,
 			10,
@@ -97,11 +108,10 @@
 			knapsack2
         );
 
-		// Array of 0 to max Generations
+		// Array of 0 to Max Generations
 		const x_axis = [...Array(maxGenerations).keys()];
 
-		// set up charts
-
+		// Set up and initialize charts with data
 		var gaCtx = document.getElementById('ga');
 
 		var gaChart = new Chart(gaCtx, {
